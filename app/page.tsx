@@ -3,29 +3,35 @@ import Link from "next/link"
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50">
-      <header className="px-4 lg:px-6 h-16 flex items-center justify-center">
-        <div className="w-full max-w-7xl flex justify-between items-center">
-          <div className="animate-fade-in opacity-0">
-            <Link href="/" className="flex items-center justify-center">
-              <ShovelIcon className="h-8 w-8 text-primary-600" />
-              <span className="ml-2 text-2xl font-bold text-primary-800">TripShaman</span>
-            </Link>
-          </div>
-          <nav className="flex gap-4 sm:gap-6">
-            {["How It Works", "Featured Shamans", "About", "Contact"].map((item, index) => (
-              <div
-                key={item}
-                className={`animate-fade-in opacity-0`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <Link href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
-                  {item}
-                </Link>
-              </div>
-            ))}
-          </nav>
+    <header className="px-4 lg:px-6 h-16 flex items-center justify-center">
+      <div className="w-full max-w-7xl flex justify-between items-center">
+        <div className="animate-fade-in opacity-0">
+          <Link href="/" className="flex items-center justify-center">
+            <ShovelIcon className="h-8 w-8 text-primary-600" />
+            <span className="ml-2 text-2xl font-bold text-primary-800">TripShaman</span>
+          </Link>
         </div>
-      </header>
+        <nav className="flex gap-4 sm:gap-6">
+          {[
+            { name: "Home", href: "/" },
+            { name: "How It Works", href: "#how-it-works" },
+            { name: "Featured Shamans", href: "#featured-shamans" },
+            { name: "Find a Shaman", href: "/find-shaman" },
+            { name: "Become a Shaman", href: "/become-shaman" },            
+          ].map((item, index) => (
+            <div
+              key={item.name}
+              className={`animate-fade-in opacity-0`}
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <Link href={item.href} className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                {item.name}
+              </Link>
+            </div>
+          ))}
+        </nav>
+      </div>
+    </header>
       <main className="flex-grow">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container mx-auto px-4 md:px-6">
