@@ -1,5 +1,5 @@
-// app/become-shaman/page.jsx
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
 
 export default function BecomeShaman() {
   return (
@@ -25,7 +25,7 @@ export default function BecomeShaman() {
           </div>
           <div className="mb-6">
             <label htmlFor="bio" className="block text-gray-700 font-bold mb-2">Bio</label>
-            <textarea id="bio" name="bio" rows="4" className="w-full px-3 py-2 border rounded-lg" required></textarea>
+            <textarea id="bio" name="bio" rows={4} className="w-full px-3 py-2 border rounded-lg" required></textarea>
           </div>
           <button type="submit" className="w-full bg-primary-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-primary-700">
             Apply

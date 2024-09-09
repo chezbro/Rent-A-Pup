@@ -1,45 +1,37 @@
-import NextAuth from 'next-auth';
-import CredentialsProvider from "next-auth/providers/credentials";
-import Airtable from 'airtable';
+import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
+import Airtable from 'airtable';
 
-export const authOptions = {
-  providers: [
-    CredentialsProvider({
-      name: 'Credentials',
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" }
-      },
-      async authorize(credentials) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/signin`, {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" }
-        });
-        const user = await res.json();
+const base = new Airtable({ apiKey: process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN }).base(process.env.AIRTABLE_BASE_ID);
 
-        if (res.ok && user) {
-          return user;
-        }
-        return null;
-      }
-    })
-  ],
-  callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user };
-    },
-    async session({ session, token }) {
-      session.user = token;
-      return session;
-    },
-  },
-  pages: {
-    signIn: '/auth/signin',
-  },
-};
+export async function POST(request) {
+  try {
+    const { email, password } = await request.json();
 
-const handler = NextAuth(authOptions);
+    // Find user by email
+    const records = await base('Users').select({
+      filterByFormula: `{Email} = '${email}'`
+    }).firstPage();
 
-export { handler as GET, handler as POST };
+    if (records.length === 0) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
+    const user = records[0];
+
+    // Verify password
+    const isPasswordValid = await bcrypt.compare(password, user.fields.Password);
+
+    if (!isPasswordValid) {
+      return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
+    }
+
+    // Password is valid, return user data (excluding password)
+    const { Password, ...userWithoutPassword } = user.fields;
+    return NextResponse.json({ id: user.id, ...userWithoutPassword });
+
+  } catch (error) {
+    console.error('Sign-in error:', error);
+    return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
+  }
+}

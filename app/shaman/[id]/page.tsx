@@ -1,7 +1,22 @@
-// app/shaman/[id]/page.jsx
 import Link from 'next/link'
 
-const mockShamans = [
+// Define the type for the mockShamans
+type Shaman = {
+  id: number;
+  name: string;
+  speciality: string;
+  rating: number;
+  bio: string;
+  reviews: {
+    id: number;
+    user: string;
+    rating: number;
+    comment: string;
+    date: string;
+  }[];
+};
+
+const mockShamans: Shaman[] = [
   {
     id: 1,
     name: "Amara Willow",
@@ -14,9 +29,14 @@ const mockShamans = [
     ]
   },
   // Add more mock shamans here...
-]
+];
 
-export default function ShamanProfile({ params }) {
+// Define the type for the params prop
+type Params = {
+  id: string;
+};
+
+export default function ShamanProfile({ params }: { params: Params }) {
   const shaman = mockShamans.find(s => s.id === parseInt(params.id))
 
   if (!shaman) {
