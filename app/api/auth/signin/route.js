@@ -27,7 +27,7 @@ export async function POST(request) {
     }
 
     // Password is valid, return user data (excluding password)
-    const { Password, ...userWithoutPassword } = user.fields;
+    const { Password: _, ...userWithoutPassword } = user.fields;
     return NextResponse.json({ id: user.id, ...userWithoutPassword });
 
   } catch (error) {

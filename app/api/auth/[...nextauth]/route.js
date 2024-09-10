@@ -36,7 +36,7 @@ const authOptions = {
           }
 
           // Password is valid, return user data (excluding password)
-          const { Password, ...userWithoutPassword } = user.fields;
+          const { Password: _, ...userWithoutPassword } = user.fields;
           return { id: user.id, ...userWithoutPassword };
 
         } catch (error) {
@@ -63,3 +63,4 @@ const authOptions = {
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST }
+
