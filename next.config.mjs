@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env.NODE_ENV === 'production' ? '/tripshaman' : '',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   async headers() {
     return [
       {
