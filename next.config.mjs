@@ -1,15 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-    return process.env.VERCEL_URL
-      ? [
-          {
-            source: '/tripshaman/:path*',
-            destination: '/:path*',
-          },
-        ]
-      : [];
-  },
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/tripshaman' : '',
   async headers() {
     return [
       {
