@@ -32,9 +32,9 @@ export default function Home() {
           <nav className="hidden md:flex gap-6">
             {[
               { name: "Featured Shamans", href: "#featured-shamans" },
-              { name: "Find a Shaman", href: "find-shaman" },
-              { name: "Become a Shaman", href: "become-shaman" },
-              { name: "Book Now", href: "auth/register" },
+              { name: "Find a Shaman", href: "./find-shaman" },
+              { name: "Become a Shaman", href: "./become-shaman" },
+              { name: "Book Now", href: "./auth/register" },
             ].map((item, index) => (
               <div
                 key={item.name}
@@ -73,7 +73,7 @@ export default function Home() {
                 {session ? (
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <Link
-                      href="dashboard"
+                      href="./dashboard"
                       className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1"
                     >
                       Go to Dashboard
@@ -87,7 +87,7 @@ export default function Home() {
                   </div>
                 ) : (
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <Link href="waitlist" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1">
+                    <Link href="./waitlist" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1">
                       Join Waitlist
                     </Link>
                   </div>
@@ -156,7 +156,7 @@ export default function Home() {
                   Today, modern shamanic practices blend ancient wisdom with contemporary understanding, offering a unique approach to wellness and personal development in our fast-paced world.
                 </p>
                 <Link
-                  href="learn-more"
+                  href="./learn-more"
                   className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
                 >
                   Explore Shamanic Practices
@@ -227,7 +227,7 @@ export default function Home() {
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">{shaman.name}</h3>
                   <p className="text-gray-600 mb-6">{shaman.title}</p>
                   <Link
-                    href={`shaman/${index + 1}`}
+                    href={`./shaman/${index + 1}`}
                     className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1"
                   >
                     Book Session
