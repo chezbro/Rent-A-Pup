@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  async rewrites() {
+    return process.env.VERCEL_URL
+      ? [
+          {
+            source: '/tripshaman/:path*',
+            destination: '/:path*',
+          },
+        ]
+      : [];
+  },
   async headers() {
     return [
       {
