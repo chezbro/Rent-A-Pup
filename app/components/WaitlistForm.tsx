@@ -6,46 +6,38 @@ import { useRouter } from 'next/navigation';
 export default function WaitlistForm() {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const validateEmail = (email: string) => {
-    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const validatePhone = (phone: string) => {
-    const re = /^(\+1|1)?[-.\s]?\(?[2-9][0-8][0-9]\)?[-.\s]?[2-9][0-9]{2}[-.\s]?[0-9]{4}$/;
-    return re.test(phone);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    if (!name || !contact) {
-      setError('Please fill in all fields.');
-      setIsLoading(false);
-      return;
-    }
-
-    if (!validateEmail(contact) && !validatePhone(contact)) {
-      setError('Please enter a valid email or US phone number.');
-      setIsLoading(false);
-      return;
-    }
+    console.log('Submitting form:', { name, contact });
 
     try {
-      // Here you would typically send the data to your backend
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Redirect to success page
-      router.push('/waitlist-success');
+      const response = await fetch('/api/auth/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, contact }),
+      });
+
+      console.log('Response status:', response.status);
+      const data = await response.json();
+      console.log('Response data:', data);
+
+      if (response.ok) {
+        console.log('Redirecting to success page');
+        router.push('/waitlist-success');
+      } else {
+        console.error('Error response:', data);
+        setError(data.error || 'Failed to join waitlist');
+      }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      console.error('Fetch error:', error);
+      setError('An unexpected error occurred');
     } finally {
       setIsLoading(false);
     }
@@ -65,7 +57,7 @@ export default function WaitlistForm() {
         />
       </div>
       <div>
-        <label htmlFor="contact" className="block text-sm font-medium text-gray-700">Email or US Phone Number</label>
+        <label htmlFor="contact" className="block text-sm font-medium text-gray-700">Email or Phone</label>
         <input
           type="text"
           id="contact"
