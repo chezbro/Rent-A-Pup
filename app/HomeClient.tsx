@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import CustomLink from './components/CustomLink'
 import { useSession, signOut } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 
@@ -24,10 +24,10 @@ export default function Home() {
       <header className={`px-4 lg:px-6 h-20 flex items-center justify-center sticky top-0 transition-all duration-300 z-50 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
         <div className="w-full max-w-7xl flex justify-between items-center">
           <div className="animate-fade-in opacity-0">
-            <Link href="/" className="flex items-center justify-center group">
+            <CustomLink href="/" className="flex items-center justify-center group">
               <ShovelIcon className="h-10 w-10 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 transform group-hover:rotate-12 transition-transform duration-300" />
               <span className="ml-2 text-3xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">TripShaman</span>
-            </Link>
+            </CustomLink>
           </div>
           <nav className="hidden md:flex gap-6">
             {[
@@ -41,9 +41,9 @@ export default function Home() {
                 className={`animate-fade-in opacity-0`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <Link href={item.href} className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
+                <CustomLink href={item.href} className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
                   {item.name}
-                </Link>
+                </CustomLink>
               </div>
             ))}
           </nav>
@@ -72,12 +72,12 @@ export default function Home() {
                 </p>
                 {session ? (
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <Link
+                    <CustomLink
                       href="/dashboard"
                       className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1"
                     >
                       Go to Dashboard
-                    </Link>
+                    </CustomLink>
                     <button 
                       onClick={() => signOut()} 
                       className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1"
@@ -87,9 +87,9 @@ export default function Home() {
                   </div>
                 ) : (
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <Link href="/waitlist" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1">
+                    <CustomLink href="/waitlist" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1">
                       Join Waitlist
-                    </Link>
+                    </CustomLink>
                   </div>
                 )}
               </div>
@@ -155,7 +155,7 @@ export default function Home() {
                 <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
                   Today, modern shamanic practices blend ancient wisdom with contemporary understanding, offering a unique approach to wellness and personal development in our fast-paced world.
                 </p>
-                <Link
+                <CustomLink
                   href="/learn-more"
                   className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
                 >
@@ -163,7 +163,7 @@ export default function Home() {
                   <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
-                </Link>
+                </CustomLink>
               </div>
             </div>
           </div>
@@ -226,12 +226,12 @@ export default function Home() {
                   />
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">{shaman.name}</h3>
                   <p className="text-gray-600 mb-6">{shaman.title}</p>
-                  <Link
+                  <CustomLink
                     href={`/shaman/${index + 1}`}
                     className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1"
                   >
                     Book Session
-                  </Link>
+                  </CustomLink>
                 </div>
               ))}
             </div>
@@ -243,27 +243,27 @@ export default function Home() {
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="flex flex-col space-y-4">
               <h3 className="text-lg font-semibold">About Us</h3>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Our Story</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Team</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Careers</Link>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Our Story</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Team</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Careers</CustomLink>
             </div>
             <div className="flex flex-col space-y-4">
               <h3 className="text-lg font-semibold">Services</h3>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Shamanic Healing</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Energy Work</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Spiritual Counseling</Link>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Shamanic Healing</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Energy Work</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Spiritual Counseling</CustomLink>
             </div>
             <div className="flex flex-col space-y-4">
               <h3 className="text-lg font-semibold">Contact</h3>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Contact Us</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Support</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">FAQ</Link>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Contact Us</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Support</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">FAQ</CustomLink>
             </div>
             <div className="flex flex-col space-y-4">
               <h3 className="text-lg font-semibold">Legal</h3>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</Link>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Service</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</CustomLink>
             </div>
           </div>
           <div className="mt-12 border-t border-gray-700 pt-8">
