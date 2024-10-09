@@ -15,7 +15,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/tripshaman/:path*',
+        source: '/rent-a-pup/:path*',
         destination: '/:path*',
       },
     ];

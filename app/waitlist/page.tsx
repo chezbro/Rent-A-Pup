@@ -8,7 +8,7 @@ export default function Waitlist() {
       <div className="max-w-md mx-auto">
         <div className="text-center">
           <ShovelIcon className="mx-auto h-12 w-12 text-primary-600" />
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Join the TripShaman Waitlist</h2>
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Join the Rent A Pup Waitlist</h2>
           <p className="mt-2 text-sm text-gray-600">
             Be the first to experience on-demand shamanic healing.
           </p>

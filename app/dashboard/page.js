@@ -29,7 +29,7 @@ export default function Dashboard() {
         <div className="w-full max-w-7xl flex justify-between items-center">
           <Link href="/" className="flex items-center justify-center">
             <ShovelIcon className="h-8 w-8 text-primary-600" />
-            <span className="ml-2 text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">TripShaman</span>
+            <span className="ml-2 text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Rent A Pup</span>
           </Link>
           <nav className="flex gap-4 sm:gap-6">
             <Link href="/" className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors">
@@ -59,7 +59,7 @@ export default function Dashboard() {
 
       <footer className="w-full py-6 bg-gray-100">
         <div className="container mx-auto px-4 text-center text-sm text-gray-500">
-          © 2024 TripShaman. All rights reserved.
+          © 2024 Rent A Pup. All rights reserved.
         </div>
       </footer>
     </div>

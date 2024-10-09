@@ -20,8 +20,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TripShaman",
-  description: "Guided plant ceremonies by trusted Shamans.",
+  title: "Rent A Pup",
+  description: "On Demand Doggies for the Day.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

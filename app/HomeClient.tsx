@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react'
 
 type SVGProps = React.SVGProps<SVGSVGElement>;
 
-
 export default function Home() {
   const { data: session } = useSession()
   const [isScrolled, setIsScrolled] = useState(false)
@@ -25,16 +24,16 @@ export default function Home() {
         <div className="w-full max-w-7xl flex justify-between items-center">
           <div className="animate-fade-in opacity-0">
             <CustomLink href="/" className="flex items-center justify-center group">
-              <ShovelIcon className="h-10 w-10 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 transform group-hover:rotate-12 transition-transform duration-300" />
-              <span className="ml-2 text-3xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">TripShaman</span>
+              <DogIcon className="h-10 w-10 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 transform group-hover:rotate-12 transition-transform duration-300" />
+              <span className="ml-2 text-3xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">Rent-A-Pup</span>
             </CustomLink>
           </div>
           <nav className="hidden md:flex gap-6">
             {[
-              { name: "Featured Shamans", href: "#featured-shamans" },
-              { name: "Find a Shaman", href: "/find-shaman" },
-              { name: "Become a Shaman", href: "/become-shaman" },
-              { name: "Book Now", href: "/auth/register" },
+              { name: "Available Dogs", href: "#available-dogs" },
+              { name: "How It Works", href: "#how-it-works" },
+              { name: "Pricing", href: "/pricing" },
+              { name: "Rent Now", href: "/rent" },
             ].map((item, index) => (
               <div
                 key={item.name}
@@ -64,11 +63,10 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
               <div className="flex flex-col justify-center space-y-8 animate-slide-up opacity-0 text-center lg:text-left max-w-xl">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">
-                  On-Demand Shamanic Healing
+                  Your Daily Dose of Canine Companionship
                 </h1>
                 <p className="text-xl text-gray-600 dark:text-gray-400">
-                  Experience the transformative power of shamanic healing with our on-demand service. Book a session
-                  with a certified Shaman and start your journey to wellness.
+                  Experience the joy of having a furry friend without the long-term commitment. Rent a dog for a day and create unforgettable memories!
                 </p>
                 {session ? (
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -87,16 +85,16 @@ export default function Home() {
                   </div>
                 ) : (
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <CustomLink href="/waitlist" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1">
-                      Join Waitlist
+                    <CustomLink href="/rent" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1">
+                      Rent a Pup
                     </CustomLink>
                   </div>
                 )}
               </div>
               <div className="animate-fade-in opacity-0 w-full max-w-md" style={{ animationDelay: '300ms' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1543440419-32378906cbc2?q=80&w=2971&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Shamanic Healing"
+                  src="https://placedog.net/800/600?random"
+                  alt="Happy dog"
                   className="w-full h-auto rounded-2xl shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
                 />
               </div>
@@ -113,57 +111,26 @@ export default function Home() {
             <div className="relative">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-center mb-16 text-gray-900 animate-fade-in opacity-0">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">
-                  Unveiling the Ancient Wisdom
+                  Why Choose Rent-A-Pup?
                 </span>
-                <br />of Shamanic Healing
               </h2>
               
-              <div className="grid gap-12 md:grid-cols-2">
-                <div className="space-y-6 animate-slide-up opacity-0" style={{ animationDelay: '100ms' }}>
-                  <div className="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4">What is Shamanic Healing?</h3>
-                    <p className="text-gray-600">
-                      Shamanic healing is a holistic approach that has been used for thousands of years across various cultures worldwide. Rooted in the belief that everything is interconnected, it addresses the spiritual and emotional causes of ailments or disharmony.
-                    </p>
-                    <p className="text-gray-600 mt-4">
-                      Shamans, also known as medicine men or women, act as intermediaries between the physical and spiritual worlds, using various techniques to facilitate healing and personal growth.
-                    </p>
+              <div className="grid gap-12 md:grid-cols-3">
+                {[
+                  { title: "Wide Selection", description: "Choose from a variety of breeds and personalities to find your perfect match.", icon: "🐾" },
+                  { title: "Flexible Rentals", description: "Rent for a few hours or a full day, whatever suits your schedule.", icon: "⏰" },
+                  { title: "Health Checked", description: "All our dogs are vaccinated, well-cared for, and ready for adventure.", icon: "🏥" },
+                ].map((feature, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center text-center animate-slide-up opacity-0 bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-2"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="text-5xl mb-6">{feature.icon}</div>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-800">{feature.title}</h3>
+                    <p className="text-gray-600">{feature.description}</p>
                   </div>
-                </div>
-                
-                <div className="space-y-6 animate-slide-up opacity-0" style={{ animationDelay: '200ms' }}>
-                  <div className="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Historical Usage and Cultural Significance</h3>
-                    <p className="text-gray-600">
-                      The practice of shamanism dates back to prehistoric times and has been observed in cultures across the globe, from the indigenous peoples of the Americas to the tribal societies of Siberia and beyond.
-                    </p>
-                    <ul className="mt-4 space-y-2">
-                      {['Healing physical and emotional ailments', 'Guiding individuals through life transitions', 'Maintaining harmony within communities and with nature', 'Preserving cultural wisdom and traditions'].map((item, index) => (
-                        <li key={index} className="flex items-center text-gray-600">
-                          <svg className="h-6 w-6 mr-2 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-16 text-center animate-fade-in opacity-0" style={{ animationDelay: '300ms' }}>
-                <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                  Today, modern shamanic practices blend ancient wisdom with contemporary understanding, offering a unique approach to wellness and personal development in our fast-paced world.
-                </p>
-                <CustomLink
-                  href="/learn-more"
-                  className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
-                >
-                  Explore Shamanic Practices
-                  <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </CustomLink>
+                ))}
               </div>
             </div>
           </div>
@@ -176,14 +143,15 @@ export default function Home() {
                 How It Works
               </h2>
               <p className="mt-4 text-xl text-gray-600 animate-fade-in opacity-0" style={{ animationDelay: '100ms' }}>
-                Your journey to spiritual awakening, just a click away
+                Renting a pup is easy and fun!
               </p>
             </div>
-            <div className="grid gap-12 md:grid-cols-3">
+            <div className="grid gap-12 md:grid-cols-4">
               {[
-                { title: "Book a Session", description: "Select the type of shamanic healing you need and book a session.", icon: "📅" },
-                { title: "Connect with a Shaman", description: "A Shaman will be with you within 30 minutes to guide your session.", icon: "🔗" },
-                { title: "Experience Transformation", description: "Unlock your full potential with shamanic healing.", icon: "✨" },
+                { title: "Browse Dogs", description: "Explore our selection of available dogs.", icon: "🔍" },
+                { title: "Choose Your Pup", description: "Select the perfect furry companion for your day.", icon: "🐶" },
+                { title: "Book Your Time", description: "Pick a date and duration for your puppy adventure.", icon: "📅" },
+                { title: "Enjoy Playtime", description: "Meet your new friend and create lasting memories!", icon: "🎉" },
               ].map((step, index) => (
                 <div
                   key={index}
@@ -198,39 +166,40 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="featured-shamans" className="w-full py-24 bg-gray-50">
+
+        <section id="available-dogs" className="w-full py-24 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary-800 animate-fade-in opacity-0">
-                Featured Shamans
+                Featured Pups
               </h2>
               <p className="mt-4 text-xl text-gray-600 animate-fade-in opacity-0" style={{ animationDelay: '100ms' }}>
-                Wisdom keepers, bridging ancient traditions with modern healing
+                Meet some of our adorable dogs available for rent
               </p>
             </div>
             <div className="grid gap-8 md:grid-cols-3">
               {[
-                { name: "Amara Willow", title: "Shamanic Healer" },
-                { name: "Kai Nakamura", title: "Shamanic Practitioner" },
-                { name: "Lila Raven", title: "Shamanic Guide" },
-              ].map((shaman, index) => (
+                { name: "Buddy", breed: "Golden Retriever" },
+                { name: "Luna", breed: "Husky" },
+                { name: "Max", breed: "Labrador" },
+              ].map((dog, index) => (
                 <div
                   key={index}
                   className="flex flex-col items-center text-center bg-white p-8 rounded-lg shadow-lg animate-slide-up opacity-0 hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-2"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <img
-                    src={`https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528`}
-                    alt={shaman.name}
-                    className="w-32 h-32 rounded-full mb-6 border-4 border-primary-100 object-cover"
+                    src={`https://placedog.net/300/300?id=${index + 1}`}
+                    alt={dog.name}
+                    className="w-full h-64 object-cover rounded-lg mb-6"
                   />
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{shaman.name}</h3>
-                  <p className="text-gray-600 mb-6">{shaman.title}</p>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{dog.name}</h3>
+                  <p className="text-gray-600 mb-6">{dog.breed}</p>
                   <CustomLink
-                    href={`/shaman/${index + 1}`}
+                    href={`/rent/${index + 1}`}
                     className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1"
                   >
-                    Book Session
+                    Rent {dog.name}
                   </CustomLink>
                 </div>
               ))}
@@ -249,9 +218,9 @@ export default function Home() {
             </div>
             <div className="flex flex-col space-y-4">
               <h3 className="text-lg font-semibold">Services</h3>
-              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Shamanic Healing</CustomLink>
-              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Energy Work</CustomLink>
-              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Spiritual Counseling</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Dog Rentals</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Puppy Playdates</CustomLink>
+              <CustomLink href="#" className="text-gray-300 hover:text-white transition-colors">Dog Walking</CustomLink>
             </div>
             <div className="flex flex-col space-y-4">
               <h3 className="text-lg font-semibold">Contact</h3>
@@ -267,7 +236,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-12 border-t border-gray-700 pt-8">
-            <p className="text-center text-gray-400">&copy; 2024 TripShaman. All rights reserved.</p>
+            <p className="text-center text-gray-400">&copy; 2024 Rent-A-Pup. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -275,8 +244,7 @@ export default function Home() {
   )
 }
 
-
-function ShovelIcon(props: SVGProps) {
+function DogIcon(props: SVGProps) {
   return (
     <svg
       {...props}
@@ -289,9 +257,8 @@ function ShovelIcon(props: SVGProps) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M2 22v-5l5-5 5 5-5 5z" />
-      <path d="M9.5 14.5 16 8" />
-      <path d="m17 2 5 5-.5.5a3.53 3.53 0 0 1-5 0s0 0 0 0a3.53 3.53 0 0 1 0-5L17 2" />
+      <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5M8 14v.5M16 14v.5M11.25 16.25h1.5L12 17l-.75-.75z" />
+      <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306" />
     </svg>
   )
 }

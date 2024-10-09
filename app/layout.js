@@ -4,8 +4,8 @@ import { AuthProvider } from './providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'TripShaman',
-  description: 'On-Demand Shamanic Healing',
+  title: 'Rent A Pup',
+  description: 'On-Demand Doggies',
 }
 
 export default function RootLayout({ children }) {

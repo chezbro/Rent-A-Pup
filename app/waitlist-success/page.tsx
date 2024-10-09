@@ -29,7 +29,7 @@ export default function WaitlistSuccess() {
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
       <Toaster />
       <ShovelIcon className="h-16 w-16 text-primary-600 mb-8" />
-      <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">Welcome to the TripShaman Waitlist!</h1>
+      <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">Welcome to the Rent A Pup Waitlist!</h1>
       <p className="text-xl text-gray-600 mb-8 text-center">We're excited to have you on board. We'll notify you as soon as we launch.</p>
       <Link href="/" className="text-primary-600 hover:text-primary-800 transition-colors duration-200">
         Return to Home Page
