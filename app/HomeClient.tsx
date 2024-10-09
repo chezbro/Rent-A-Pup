@@ -3,67 +3,10 @@
 import CustomLink from './components/CustomLink'
 import { useSession, signOut } from 'next-auth/react'
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
 
 type SVGProps = React.SVGProps<SVGSVGElement>;
 
-type Dog = {
-  id: number;
-  name: string;
-  breed: string;
-  age: number;
-  description: string;
-  image: string;
-}
-
-// Example placeholder dogs
-const placeholderDogs: Dog[] = [
-  {
-    id: 1,
-    name: "Buddy",
-    breed: "Golden Retriever",
-    age: 3,
-    description: "Friendly and energetic, loves to play fetch!",
-    image: "/images/dog1.jpg"
-  },
-  {
-    id: 2,
-    name: "Luna",
-    breed: "Husky",
-    age: 2,
-    description: "Playful and talkative, enjoys long walks.",
-    image: "/images/dog2.jpg"
-  },
-  {
-    id: 3,
-    name: "Max",
-    breed: "Labrador",
-    age: 4,
-    description: "Gentle giant, great with kids and other pets.",
-    image: "/images/dog3.jpg"
-  }
-];
-
-const DogCard = ({ dog }: { dog: Dog }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden">
-    <Image
-      src={dog.image}
-      alt={dog.name}
-      width={300}
-      height={200}
-      className="w-full h-48 object-cover"
-    />
-    <div className="p-4">
-      <h3 className="text-xl font-semibold mb-2">{dog.name}</h3>
-      <p className="text-gray-600 mb-2">{dog.breed}</p>
-      <p className="text-gray-600 mb-2">Age: {dog.age}</p>
-      <p className="text-gray-600">{dog.description}</p>
-    </div>
-  </div>
-)
-
-export default function HomeClient({ dogs = placeholderDogs }: { dogs?: Dog[] }) {
+export default function Home() {
   const { data: session } = useSession()
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -280,15 +223,32 @@ export default function HomeClient({ dogs = placeholderDogs }: { dogs?: Dog[] })
                 Meet some of our adorable dogs available for rent
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {dogs.slice(0, 3).map((dog) => (
-                <DogCard key={dog.id} dog={dog} />
+            <div className="grid gap-8 md:grid-cols-3">
+              {[
+                { name: "Buddy", breed: "Golden Retriever" },
+                { name: "Luna", breed: "Husky" },
+                { name: "Max", breed: "Labrador" },
+              ].map((dog, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center text-center bg-white p-8 rounded-lg shadow-lg animate-slide-up opacity-0 hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-2"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <img
+                    src={`https://placedog.net/300/300?id=${index + 1}`}
+                    alt={dog.name}
+                    className="w-full h-64 object-cover rounded-lg mb-6"
+                  />
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{dog.name}</h3>
+                  <p className="text-gray-600 mb-6">{dog.breed}</p>
+                  <CustomLink
+                    href={`/rent/${index + 1}`}
+                    className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition duration-150 ease-in-out transform hover:-translate-y-1"
+                  >
+                    Rent {dog.name}
+                  </CustomLink>
+                </div>
               ))}
-            </div>
-            <div className="mt-6 text-center">
-              <Link href="/available-dogs" className="text-blue-600 hover:text-blue-800 underline">
-                See All Available Dogs
-              </Link>
             </div>
           </div>
         </section>

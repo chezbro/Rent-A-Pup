@@ -20,12 +20,10 @@ export default function AvailableDogs() {
         { id: 1, name: "Buddy", breed: "Golden Retriever", availability: "Mon, Wed, Fri" },
         { id: 2, name: "Luna", breed: "Husky", availability: "Tue, Thu, Sat" },
         { id: 3, name: "Max", breed: "Labrador", availability: "Wed, Fri, Sun" },
-        { id: 4, name: "Bella", breed: "Poodle", availability: "Mon, Thu, Sat" },
-        { id: 5, name: "Charlie", breed: "Beagle", availability: "Tue, Fri, Sun" },
-        { id: 6, name: "Lucy", breed: "Dachshund", availability: "Mon, Wed, Sat" },
-        { id: 7, name: "Cooper", breed: "German Shepherd", availability: "Tue, Thu, Sun" },
-        { id: 8, name: "Daisy", breed: "Corgi", availability: "Wed, Sat, Sun" },
-        { id: 9, name: "Rocky", breed: "Bulldog", availability: "Mon, Thu, Fri" },
+        // Hardcoded example dogs
+        { id: 101, name: "Example Dog 1", breed: "Example Breed 1", availability: "Mon, Wed, Fri" },
+        { id: 102, name: "Example Dog 2", breed: "Example Breed 2", availability: "Tue, Thu, Sat" },
+        { id: 103, name: "Example Dog 3", breed: "Example Breed 3", availability: "Wed, Fri, Sun" },
       ]
       setDogs(mockDogs)
     }
